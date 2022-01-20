@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="web_css.css">
+    <script>
+    function FORM_VALIDATION() {
+        
+        var email = 
+            document.forms["RegForm"]["EMail"];
+        
+        var password = 
+            document.forms["RegForm"]["Password"];
+
+            if (email.value == "") {
+                 window.alert("Please enter  e-mail address.");
+                EMail.focus();
+                return false;
+                }
+       
+        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if(email.value.match(mailformat))
+            {
+             
+            }
+            else
+            {
+                 alert("You have entered an invalid email address!");
+               EMail.focus();
+                 return false;
+            }        
+
+        if (password.value == "") {
+            window.alert("Please enter your password");
+            Password.focus();
+            return false;
+        }
+
+        if ( password.length<8 || password.length>8) {
+            window.alert("Please enter correct password(length=8");
+            Password.focus();
+            return false;
+        }
+        
+    }
+</script>
+<style>
+  
+    
+    form {
+        margin: 0 auto;
+        width: 600px;
+    }
+    h1{
+        margin-top: 80px;
+        margin-right: 520px;
+    }
+    a {
+        text-decoration: none;
+        color:lightcoral;
+}
+</style>
+</head>
+<body>
+    <h1 style="text-align: center;">Login</h1>
+    <form action="home.html" name="RegForm" onsubmit="return FORM_VALIDATION()" >
+        <br>
+        <table width="700" border="0" align="center" cellpadding="0" cellspacing="5">
+            <tr>
+                <td>Email</td>
+                <td><input name="Email" type="email" size="30" required></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Password</td>
+                <td><input name="Password" type="password" size="30" required></td>
+                <td></td>
+              </tr>
+        
+       </table>  
+        <br>   
+         <p>
+             <a href="login.html">
+            <input type="submit"  name="SUBMIT"  />
+             </a>
+            &nbsp;&nbsp;&nbsp; NEW USER?
+            <a href="newuser1.html">Click Here!</a>
+        </p>
+     
+    </form>
+    <script>
+        let studentdetails=[];
+        const sham =(ev)=> {
+        ev.preventDefault();
+        let email1 = {
+               email :document.getElementById('Email').value
+       
+        }
+        let password1={
+            pass :document.getElementById('Password').value
+        }
+        
+        studentdetails.unshift(email1);     
+       studentdetails.unshift(password1);
+        document.forms[0].reset();
+        console.warn("added", {studentdetails});
+        
+        }
+        document.addEventListener('DOMContentLoaded', ()=>{
+        document.getElementById('submit').addEventListener('click', sham);
+        }
+        );
+        </script>
+</body>
+
+
+</html>
